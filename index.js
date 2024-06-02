@@ -8,9 +8,15 @@ app.use(express.static("public"));
 app.get("/", (req, res ) => {
         res.render("index.ejs",{ page: "home"});
 });
+
 app.get("/blogs", (req, res) => {
-    res.render("index.ejs",{ page: "blogs"});
+    res.render("blogs.ejs",{ page: "blogs"});
 });
+
+app.get("/profilepage", (req, res) =>{
+
+});
+
 app.listen(port, () => {
     console.log(`server is running on port : ${port}`);
 });

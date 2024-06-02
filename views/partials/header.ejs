@@ -17,10 +17,9 @@
 </head>
 
 <body>
-    <nav class="navigation">
-
-        <div class="navbar navbar-expand-lg fixed-top">
-            <div class="container-fluid shadow">
+    <nav class="navigation <%= (locals.page === 'home') ? 'drop-in' : '' %>">
+        <div class="navbar navbar-expand-lg ">
+            <div class="container-fluid shadow-lg fixed-top">
                 <a class="navbar-brand" href="#">
                     <img src="images/logo.png" alt="Star Blogs" class="drop-shadow logo">
                 </a>
