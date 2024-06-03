@@ -14,7 +14,15 @@ app.get("/blogs", (req, res) => {
 });
 
 app.get("/profilepage", (req, res) =>{
+    res.render("profilepage.ejs");
+});
 
+app.get("/createblog", (req, res) =>{
+
+});
+
+app.get("/signin",(req, res) =>{
+    res.render("login.ejs");
 });
 
 app.listen(process.env.PORT || port );
