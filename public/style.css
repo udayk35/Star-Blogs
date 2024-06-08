@@ -243,3 +243,24 @@
 {
     margin: 10px;
 }
+
+/* signup */
+.form
+{
+    border-radius: 10px;
+    border: 2px solid black;
+    max-width: 80vw;
+    margin:20px auto;
+    padding: 20px;
+}
+
+.submit{
+    text-align: center;
+}
+
+
+@media screen and (min-width:700px) {
+    .form{
+        max-width: 650px;
+    }
+}
