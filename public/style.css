@@ -213,13 +213,15 @@
     width: 20vw;
 }
 .profile-item-2{
+   
     margin: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
+
 .profile-item-2>a{
-    margin: 10px;
+    margin: auto;
 }
 .profile-item-2>a>button
 {

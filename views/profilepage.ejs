@@ -1,27 +1,35 @@
 <%- include('partials/header.ejs') %>
 
-<div class="profile-card shadow">
-    <div class="profile-item-1">
-        <img src="/images/profile-user.png" alt="">
+    <div class="profile-card shadow">
+        <div class="profile-item-1">
+            <img src="/images/profile-user.png" alt="">
+        </div>
+        <div class="profile-item-2">
+            <% if(locals.name && name !== "") {%>
+                <h2>
+                    <%= name %>
+                    <form action="/signout" method="post">
+                        <input type="submit" class="btn btn-lg btn-dark" value="Sign out">
+                    </form>
+                </h2>
+            <% } else {%>
+        
+        <a href=" /signup">
+                        <button class="signup btn btn-dark btn-lg">
+                            Sign up
+                        </button>
+                        </a>
+
+                        <a href="/signin">
+                            <button class="signin btn btn-dark btn-lg">
+                                Sign in
+                            </button>
+                        </a>
+                        <% }%>
+
+        </div>
     </div>
-    <div class="profile-item-2">
-        <a href="/signup">  
-            <button class="signup btn btn-dark btn-lg" >
-                Sign up
-            </button>
-        </a>
-
-        <a href="/signin">
-            <button class="signin btn btn-dark btn-lg" >
-                Sign in
-            </button>
-        </a>
-    </div>
-</div>
-
-<!-- Sign up -->
-
-<!-- Sign in -->
 
 
-<%- include('partials/footer.ejs') %>
+
+    <%- include('partials/footer.ejs') %>

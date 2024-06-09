@@ -8,13 +8,18 @@
             </h1>
             <div class="input">
                 <div class="mb-3">
-                    <label for="" class="form-label">Username :</label>
-                    <input type="text" class="form-control" id="form-username">
+                    <label for="" class="form-label" >Email :</label>
+                    <input type="email" class="form-control" id="form-username" name="email" required>
                 </div>
                 <div class="mb-3">
                     
                     <label for="" class="form-label">Password :</label>
-                    <input type="text" class="form-control" id="form-password">
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        <span id="password-icon" class="input-group-text" onclick="togglePasswordVisibility()">
+                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                        </span>
+                       </div>
                 </div>
             </div>
             <div class="mb-3">
