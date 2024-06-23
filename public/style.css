@@ -1,9 +1,17 @@
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Gabarito';
 }
-
+.container{
+    width: 100vw;
+    height: 100vh;
+}
+.background-color-whitesmoke{
+    background-color:whitesmoke;
+   
+}
 .blog-body {
     background-image: url('images/bg-1.jpg');
     background-size: cover;
@@ -184,6 +192,10 @@
         font-size: 40px;
         text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #fff, -1px -1px 0 #fff;
     }
+    .field-container .title{
+        color: #000;
+        text-shadow: none;
+    }
     .showWelcomeBlogs {
         grid-template-columns: auto;
         row-gap: 50px;
@@ -217,11 +229,11 @@
     margin: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .profile-item-2>a{
-    margin: auto;
+    margin: auto 20px;
 }
 .profile-item-2>a>button
 {

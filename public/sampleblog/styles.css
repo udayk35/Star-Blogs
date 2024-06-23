@@ -1,0 +1,120 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.title{
+    font-weight: bold;
+}
+.toolbar {
+    margin:20px auto;
+    width: fit-content;
+}
+
+.toolbar button {
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.toolbar button:hover {
+    background-color: #0056b3;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.field-container input,
+.field-container textarea {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    margin: auto;
+}
+.field-container .title{
+    font-weight: bold;
+    font-size: xx-large;
+}
+.field-container .subtitle{
+    font-weight: 700;
+    font-size: larger;
+}
+.field-container input:focus,
+.field-container textarea:focus {
+    border-bottom: 2px solid #007bff;}
+.field-container .title{
+    text-shadow: none !important;
+}
+.field-container .save,
+.field-container .delete {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.field-container .save {
+    background-color: #28a745;
+    color: white;
+    
+}
+.field-container .edit{
+    padding: 10px;
+    border: none;
+    background-color: aliceblue;
+    height: fit-content;
+    width: fit-content;
+
+}
+.field-container .save:hover {
+    background-color: #218838;
+}
+
+.field-container .delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.field-container .delete:hover {
+    background-color: #c82333;
+}
+
+.actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.actions .save{
+    margin-right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.actions .save:hover {
+    background-color: #218838;
+}

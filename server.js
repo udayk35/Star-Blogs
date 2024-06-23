@@ -1,7 +1,8 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 import moment from 'moment';
+import passport from 'passport';
 
 
 const app = express();
@@ -9,71 +10,52 @@ const port = 4000;
 const APP_url = "http://localhost:3000";
 app.use(express.static("public"));
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-const db = await mysql.createConnection(
+const db =await  mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
+        port: 3306,
         password: '9581494976@Uu',
         database: 'starblogs',
     }
 );
-function validSignup(user) {
 
-    try {
-
-        db.query(`select * from user where email ='${user.email}'`, (err, res, fields) => {
-            if (res.length === 0) {
-                db.query(`INSERT INTO user (first_name, last_name, email, mobile_number, dob, working_profession, password, date_time_created)
-                VALUES ('${user['first-name']}', '${user['last-name']}', '${user.email}', '${user['mobile-number']}', '${user.dob}', '${user.profession}', '${user.password}', '${NOW()}');`,);
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        });
-
-    } catch (error) {
-        console.error('Error during signup:', error);
-        res.status(500).send('Internal server error. Please try again later.');
-    }
-}
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 function NOW() {
     const date = moment().format('YYYY-MM-DD HH:mm:ss');
     console.log(date);
     return date;
 }
 //signup
-app.post("/signup", (req, res) => {
-    try {
-        if (validSignup(req.body))
-            res.redirect(`${APP_url}/`);
-        else
-            res.send("error occoured");
-    } catch (error) {
-        console.error('Error during signup:', error);
-        res.status(500).send('Internal server error. Please try again later.');
+app.post("/signup", async (req, res) => {
+    const user = req.body.user;
+    const hash = req.body.hash;
+    console.log(user);
+    const response =await (await db).query(`SELECT * FROM user WHERE email = '${user.email}'`);
+    const userExists = response[0];
+    if( userExists.length>0)
+        res.status(409).send('User already exists');
+    else
+    {
+        const result = await (await db).query('INSERT INTO user(first_name,last_name,email,mobile_number,dob,working_profession,password,date_time_created) values(?,?,?,?,?,?,?,?)',[user['first_name'],user['last_name'],user.email,user['mobile_number'],user.dob,user.working_profession,hash,NOW()])
+        res.status(200).send(user);
     }
 
 });
-//signin
-app.post("/signin", (req, res) => {
-    try {
-        db.query(`select * from user where email='${req.body.email}'`, (err, result, fields) => {
-            console.log(result);
-            if (result[0].password === req.body.password) {
-                const name = result[0].first_name + ' ' + result[0].last_name;
-                res.status(200).send(name);
-            }
-        })
-    }
-    catch {
-        console.error('Error during signup:', error);
-        res.status(500).send('Internal server error. Please try again later.');
-    }
+//getUser
+app.post("/getUser",async (req, res)=>
+{
+    console.log(req.body);
+    const user = req.body
+    const response =await (await db).query(`SELECT * FROM user WHERE email = '${user.username}'`);
+    const userExists = response[0];
+    console.log(userExists);
+    if(userExists.length>0)
+    res.status(200).send(userExists);
+    else
+    res.status(404).send("User not found");
+})
 
-});
+
 app.listen(process.env.PORT || port);

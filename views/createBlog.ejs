@@ -1,0 +1,22 @@
+<%- include('partials/start.ejs') %>
+<link rel="stylesheet" href="/sampleblog/styles.css">
+<div class="container">
+    <form  action="/createBlog" method="post">
+
+        <div id="blogContent">
+            <div class="field-container">
+               <h1>
+                   <input type="text" class="title" placeholder="Title"  name="title" >
+               </h1> 
+            </div>
+        </div>
+        <div class="actions">
+            <input type="submit" class="save" name="action" value="Save to Draft"/>
+            <input type="submit" class="save" name="action" value="Submit Blog"/>
+        </div>
+    </form>
+    <div class="toolbar">
+        <button id="addField" class="shadow"><i class="bi bi-plus"></i></button>
+    </div>
+</div>
+<script src="/sampleblog/script.js"></script>

@@ -5,9 +5,9 @@
             <img src="/images/profile-user.png" alt="">
         </div>
         <div class="profile-item-2">
-            <% if(locals.name && name !== "") {%>
+            <% if(locals.user) {%>
                 <h2>
-                    <%= name %>
+                    <%=user['first_name']+" "+user['last_name'] %>
                     <form action="/signout" method="post">
                         <input type="submit" class="btn btn-lg btn-dark" value="Sign out">
                     </form>
